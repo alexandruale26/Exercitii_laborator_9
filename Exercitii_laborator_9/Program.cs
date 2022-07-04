@@ -32,8 +32,10 @@ namespace Exercitii_laborator_9
                     o 40t pentru camioane
                 • vor avea o metoda de incarcaMarfa care va incarca o cantitate primita ca parametru asigurand incarcarea sub capacitatea maxima
 
+
               Toate autovehiculele vor avea o metoda care va produce un sir de caractere ce va descrie in detaliu fiecare autovehicul 
               in parte (producator, model, continut, etc...).
+
 
               Apelati-o in Main, si afisati-i rezultatul pe ecran.
 
