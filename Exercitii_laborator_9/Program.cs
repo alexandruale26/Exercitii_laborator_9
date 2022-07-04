@@ -7,8 +7,6 @@ namespace Exercitii_laborator_9
         static void Main(string[] args)
         {
             /*
-
-            
               Scrieti un program care va modela un parc auto.
 
               Autovehiculele vor avea
@@ -41,6 +39,7 @@ namespace Exercitii_laborator_9
 
               „Porniti” autovehiculele in metoda main.
             */
+
 
 
             ParcAuto parcAuto = new ParcAuto();
