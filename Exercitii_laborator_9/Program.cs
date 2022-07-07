@@ -43,6 +43,7 @@ namespace Exercitii_laborator_9
             */
 
 
+
             ParcAuto parcAuto = new ParcAuto();
 
             AutoturismHibrid hibrid1 = new AutoturismHibrid("Mazda", "CX-5", 4);
