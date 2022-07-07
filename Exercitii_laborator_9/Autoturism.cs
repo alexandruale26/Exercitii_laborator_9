@@ -6,22 +6,28 @@ namespace Exercitii_laborator_9
     /// <summary>
     /// Modeleaza un autoturism
     /// </summary>
-    class Autoturism : Autovehicul
+    abstract class Autoturism : Autovehicul
     {
         private readonly int numarDeLocuri = 0;
-
+        protected override Motor Motor => GetMotor();
 
         /// <summary>
         /// Creeaza un autoturism
         /// </summary>
         /// <param name="producator">Accepta ca parametru un string</param>
         /// <param name="model">Accepta ca parametru un string</param>
-        /// <param name="motor">Accepta ca parametru un motor</param>
         /// <param name="numarDeLocuri">Accepta ca parametru un int</param>
-        public Autoturism(string producator, string model, Motor motor, int numarDeLocuri) : base(producator, model, motor)
+        public Autoturism(string producator, string model, int numarDeLocuri) : base(producator, model)
         {
             this.numarDeLocuri = numarDeLocuri;
         }
+
+
+        /// <summary>
+        /// Obtine un motor
+        /// </summary>
+        /// <returns>Returneaza un motor</returns>
+        protected abstract Motor GetMotor();
 
 
         /// <summary>
@@ -51,10 +57,8 @@ namespace Exercitii_laborator_9
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-
             sb.Append(base.ToString());
             sb.Append($"  |  Numar de locuri {this.numarDeLocuri}");
-
             return sb.ToString();
         }
     }

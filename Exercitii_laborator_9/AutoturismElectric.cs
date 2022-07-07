@@ -1,37 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Exercitii_laborator_9
 {
     /// <summary>
-    /// Modeleaza un autovehicul
+    /// Modeleaza un autoturism electric
     /// </summary>
-    abstract class Autovehicul
+    class AutoturismElectric : Autoturism
     {
-        private readonly string producator = string.Empty;
-        private readonly string model = string.Empty;
-        protected abstract Motor Motor { get; }
-
-
         /// <summary>
-        /// Creeaza un autovehicul
+        /// Creeaza un autoturism electric
         /// </summary>
         /// <param name="producator">Accepta ca parametru un string</param>
         /// <param name="model">Accepta ca parametru un string</param>
-        public Autovehicul(string producator, string model)
+        /// <param name="numarDeLocuri">Accepta ca parametru un int</param>
+        public AutoturismElectric(string producator, string model, int numarDeLocuri) : base(producator, model, numarDeLocuri)
         {
-            this.producator = producator;
-            this.model = model;
         }
 
 
         /// <summary>
-        /// Porneste autovehiculul
+        /// Obtine un motor
         /// </summary>
-        public virtual void Porneste()
-        {
-            Console.WriteLine(this.Motor.SunetMotor);
-        }
+        /// <returns>Returneaza un motor</returns>
+        protected override Motor GetMotor() => new MotorElectric();
 
 
         /// <summary>
@@ -41,7 +34,9 @@ namespace Exercitii_laborator_9
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"Producator {this.producator}  |  Model {this.model}");
+
+            sb.Append(base.ToString());
+            sb.Append("  |  Motor electric");
             return sb.ToString();
         }
     }

@@ -6,14 +6,11 @@ namespace Exercitii_laborator_9
     /// <summary>
     /// Modeleaza o autoutilitara
     /// </summary>
-    class Autoutilitara : Autovehicul
+    abstract class Autoutilitara : Autovehicul
     {
-        private readonly int cantitateMaxima = 0;
-        private int cantitateCurenta = 0;
-        private readonly string unitateDeMasura = string.Empty;
-
-        private readonly TipProdus produs;
-        private readonly ManagerAutoutilitara managerAutoutilitara = new ManagerAutoutilitara();
+        protected override Motor Motor => new MotorDiesel();
+        protected abstract int CantitateMaxima { get; }
+        protected int cantitateCurenta = 0;
 
 
         /// <summary>
@@ -21,12 +18,8 @@ namespace Exercitii_laborator_9
         /// </summary>
         /// <param name="producator">Accepta ca parametru un string</param>
         /// <param name="model">Accepta ca parametru un string</param>
-        /// <param name="motor">Accepta ca parametru un motor</param>
-        /// <param name="produs">Accepta ca parametru un tip de produs</param>
-        public Autoutilitara(string producator, string model, Motor motor, TipProdus produs) : base(producator, model, motor)
+        public Autoutilitara(string producator, string model) : base(producator, model)
         {
-            this.produs = produs;
-            this.cantitateMaxima = managerAutoutilitara.StabilesteIncarcatura(this.produs, ref unitateDeMasura);
         }
 
 
@@ -34,16 +27,7 @@ namespace Exercitii_laborator_9
         /// Incarca autoutilitara cu marfa
         /// </summary>
         /// <param name="deIncarcat">Accepta ca parametru un int</param>
-        public void IncarcaMarfa(int deIncarcat)
-        {
-            if (this.cantitateCurenta + deIncarcat <= this.cantitateMaxima)
-            {
-                this.cantitateCurenta += deIncarcat;
-                Console.WriteLine($"{this.cantitateCurenta} {unitateDeMasura} din {this.cantitateMaxima} {unitateDeMasura}");
-            }
-            else
-                Console.WriteLine("Cantitatea depaseste incarcatura maxima");
-        }
+        abstract public void IncarcaMarfa(int deIncarcat);
 
 
         /// <summary>
@@ -55,8 +39,7 @@ namespace Exercitii_laborator_9
             StringBuilder sb = new StringBuilder();
 
             sb.Append(base.ToString());
-            sb.Append($"  |  Continut {Enum.GetName(typeof(TipProdus), this.produs)}  |  Cantitate {this.cantitateCurenta} {unitateDeMasura}");
-
+            sb.Append("  |  Motor Diesel");
             return sb.ToString();
         }
     }

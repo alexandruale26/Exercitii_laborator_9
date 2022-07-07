@@ -9,8 +9,7 @@ namespace Exercitii_laborator_9
     /// </summary>
     class ParcAuto
     {
-        public List<Autovehicul> auto = new List<Autovehicul>();
-
+        private List<Autovehicul> auto = new List<Autovehicul>();
 
         /// <summary>
         /// Creeaza o lista de autovehicule
@@ -23,6 +22,41 @@ namespace Exercitii_laborator_9
 
 
         /// <summary>
+        /// Incarca autoutilitarele. Parcurge lista de autovehicule
+        /// </summary>
+        public void IncarcaAutoutilitarele()
+        {
+            foreach (Autovehicul autovehicul in auto)
+            {
+                if (autovehicul is Cisterna)
+                {
+                    Console.WriteLine($"Incarca Cisterna -> {autovehicul}");
+                    Cisterna cisterna = (Cisterna)autovehicul;
+                    cisterna.IncarcaMarfa(IntroduCantitate());
+                    Console.WriteLine();
+                }
+                else if (autovehicul is Camion)
+                {
+                    Console.WriteLine($"Incarca Camion -> {autovehicul}");
+                    Camion camion = (Camion)autovehicul;
+                    camion.IncarcaMarfa(IntroduCantitate());
+                    Console.WriteLine();
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Pentru introdus o cantitate de tip intreg de la tastatura
+        /// </summary>
+        /// <returns>Returneaza cantitatea introdusa</returns>
+        private int IntroduCantitate()
+        {
+            return int.Parse(Console.ReadLine());
+        }
+
+
+        /// <summary>
         /// Porneste autovehiculele
         /// </summary>
         public void PornesteAuto()
@@ -30,6 +64,7 @@ namespace Exercitii_laborator_9
             foreach (Autovehicul autovehicul in auto)
             {
                 autovehicul.Porneste();
+                Console.WriteLine();
             }
         }
 
@@ -43,6 +78,7 @@ namespace Exercitii_laborator_9
             {
                 Console.WriteLine(autovehicul.ToString());
             }
+            Console.WriteLine();
         }
     }
 }
